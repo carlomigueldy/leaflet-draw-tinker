@@ -34,8 +34,13 @@
         map.addLayer(drawnItems);
 
         var drawControl = new L.Control.Draw({
+            draw: {
+                circle: false,
+                circlemarker: false,
+            },
             edit: {
-                featureGroup: drawnItems
+                featureGroup: drawnItems,
+                edit: false,
             }
         });
         map.addControl(drawControl);
@@ -45,7 +50,7 @@
                 layer = e.layer;
             drawnItems.addLayer(layer);
 
-            if(type == 'polygon')
+            if(type == 'polygon' || type == 'rectangle')
             {
                 // Take the coordinates from the recently drawn object
                 console.log(JSON.stringify(layer.getLatLngs().map(function(point) {
