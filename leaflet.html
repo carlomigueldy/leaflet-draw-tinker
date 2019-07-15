@@ -44,11 +44,15 @@
             var type = e.layerType,
                 layer = e.layer;
             drawnItems.addLayer(layer);
-            // Take the coordinates from the recently drawn object
-            console.log(JSON.stringify(layer.getLatLngs().map(function(point) {
-                    return [point.lat, point.lng];
-                })
-            ));
+
+            if(type == 'polygon')
+            {
+                // Take the coordinates from the recently drawn object
+                console.log(JSON.stringify(layer.getLatLngs().map(function(point) {
+                        return [point.lat, point.lng];
+                    })
+                ));
+            }
         });
     </script>
 </body>
